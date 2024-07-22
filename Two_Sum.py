@@ -1,3 +1,4 @@
+import numpy as np
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -5,12 +6,10 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        arr = [0,0]
-        for i in range (0,len(nums)):
-            for j in range(i+1,len(nums)):
-                if(nums[i] + nums[j] == target):
-                    arr[0],arr[1] = i,j
-
-
-
-        
+        arr = {}
+        for i, num in enumerate(nums):
+            c = target - num
+            if c in arr:
+                return [arr[c], i]
+            arr[num] = i
+        return []
